@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="create">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fortune Cookie</title>
+<meta name="description" content="One fortune. One person. Crack when they’re ready. A small Cantrip Studio playable from 10hi." />
+
+<!-- OG / Twitter: GENERIC only — never inject fortune text; closed cookie art only -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Fortune Cookie" />
+<meta property="og:description" content="A closed fortune cookie from a friend. Crack it open." />
+<meta property="og:site_name" content="10hi" />
+<meta property="og:url" content="https://www.sawfish-cloud.ts.net/fortune-cookie/" />
+<meta property="og:image" content="https://www.sawfish-cloud.ts.net/fortune-cookie/og-closed.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fortune Cookie" />
+<meta name="twitter:description" content="A closed fortune cookie from a friend. Crack it open." />
+<meta name="twitter:image" content="https://www.sawfish-cloud.ts.net/fortune-cookie/og-closed.png" />
+
+<link rel="stylesheet" href="/still-have-it/fonts.css" />
+<link rel="stylesheet" href="/fortune-cookie/styles.css" />
+</head>
+<body class="fc-tray-viewport">
+  <div class="rim" aria-hidden="true"></div>
+  <a class="home-logo" href="/" title="Home" aria-label="10hi home">
+    <img src="/fortune-cookie/assets/logo-10hi-mark-light.svg" width="72" height="32" alt="10HI" />
+  </a>
+
+  <main class="shell">
+    <header class="brand-block">
+      <h1 class="title">Fortune Cookie</h1>
+      <p class="lede" id="lede">One fortune. One person. Crack when they’re ready.</p>
+    </header>
+
+    <div class="card" id="card">
+      <!-- CREATE -->
+      <section class="panel panel-create" id="panel-create" aria-label="Create a fortune">
+        <p class="label" id="label-suggestions">Pick a fortune</p>
+        <div class="chips" id="chips" role="group" aria-label="Pick a fortune"></div>
+
+        <p class="label" id="label-custom">Or write your own</p>
+        <label class="visually-hidden" for="custom">Custom fortune</label>
+        <textarea
+          id="custom"
+          class="custom"
+          rows="3"
+          maxlength="180"
+          spellcheck="true"
+          placeholder="Type a short fortune…"
+        ></textarea>
+        <p class="char-count" id="char-count" aria-live="polite">0 / 180</p>
+        <p class="filter-msg" id="filter-msg" hidden role="status" aria-live="polite"></p>
+        <p class="custom-hint" id="custom-hint">Whatever you packed in this slip — they needed it.</p>
+
+        <p class="label preview-label">Preview</p>
+        <div class="cookie-stage" id="create-stage" aria-hidden="true">
+          <div class="cookie" id="create-cookie">
+            <img class="cookie-art" src="/fortune-cookie/assets/fortune-wafer-closed.png" alt="" width="200" height="155" />
+          </div>
+        </div>
+        <label class="peek-row" for="peek-slip">
+          <input type="checkbox" id="peek-slip" />
+          Peek slip
+        </label>
+        <div class="peek-slip" id="peek-slip-preview" hidden>
+          <p class="slip-text" id="peek-slip-text"></p>
+        </div>
+
+        <button type="button" class="cta" id="btn-make" disabled>Make cookie</button>
+
+        <div class="link-block" id="link-block" hidden>
+          <p class="label" id="label-get-link">Get link</p>
+          <p class="link-ready" id="link-ready">Link ready — send it when you want.</p>
+          <p class="studio-afterline" id="studio-afterline">Good news travels better when you send it on purpose.</p>
+          <button type="button" class="cta" id="btn-copy">Copy link</button>
+          <button type="button" class="cta secondary" id="btn-share" hidden>Share…</button>
+          <p class="hint" id="share-url-hint" hidden></p>
+        </div>
+      </section>
+
+      <!-- CLOSED (receive) -->
+      <section class="panel panel-closed" id="panel-closed" aria-label="Closed fortune cookie" hidden>
+        <button type="button" class="cookie-hit" id="cookie-hit" aria-label="Crack the cookie">
+          <div class="cookie" id="receive-cookie">
+            <img class="cookie-art" src="/fortune-cookie/assets/fortune-wafer-closed.png" alt="" width="200" height="155" />
+          </div>
+        </button>
+        <p class="receive-prompt" id="receive-prompt">Tap to crack</p>
+        <button type="button" class="cta" id="btn-crack">Crack it</button>
+      </section>
+
+      <!-- CRACKING (mid-beat, single surface — closed hidden) -->
+      <section class="panel panel-cracking" id="panel-cracking" aria-label="Cracking fortune cookie" hidden aria-hidden="true">
+        <div class="cookie-stage cracked-stage" aria-hidden="true">
+          <img class="cookie-art cookie-art-wide" src="/fortune-cookie/assets/fortune-wafer-cracked.png" alt="" width="220" height="140" />
+        </div>
+        <p class="receive-prompt" aria-hidden="true">…</p>
+      </section>
+
+      <!-- REVEALED — slip overlays cracked wafer (viewport-after SoT) -->
+      <section class="panel panel-revealed" id="panel-revealed" aria-label="Revealed fortune" hidden>
+        <p class="reveal-eyebrow">Your fortune</p>
+        <div class="cookie-stage cracked-stage after-stage" aria-hidden="true">
+          <img class="cookie-art cookie-art-sm" src="/fortune-cookie/assets/fortune-wafer-cracked.png" alt="" width="210" height="134" />
+          <div class="slip" id="slip" role="status" aria-live="polite">
+            <p class="slip-text" id="slip-text"></p>
+          </div>
+        </div>
+        <button type="button" class="cta" id="btn-save">Save slip</button>
+        <button type="button" class="cta secondary" id="btn-make-back">Make one back</button>
+        <p class="afterline" id="afterline">Nice. Your turn, if you want.</p>
+        <div class="wm-10hi" aria-hidden="true">10hi</div>
+      </section>
+
+      <div class="toast" id="toast" aria-live="polite"></div>
+      <p class="privacy-link"><a href="/fortune-cookie/privacy/">Privacy</a></p>
+    </div>
+  </main>
+
+  <script src="/still-have-it/vendor/shi-filter.js"></script>
+  <script src="/fortune-cookie/fortunes.js"></script>
+  <script src="/fortune-cookie/app.js"></script>
+</body>
+</html>

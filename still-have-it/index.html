@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-pack="line-art" data-item="hoodie" data-bg="light" data-surface="compose">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Still Have It</title>
+<meta name="description" content="A soft excuse to hang because you’ve kept something too long." />
+<link rel="stylesheet" href="/still-have-it/fonts.css" />
+<link rel="stylesheet" href="/still-have-it/styles.css" />
+</head>
+<body>
+  <a class="home-logo" href="/" title="Home" aria-label="10hi home">
+    <img src="/assets/logo-10hi-mark.svg" width="72" height="32" alt="10HI" />
+  </a>
+
+  <main class="shell">
+    <div class="brand">Still Have It</div>
+    <div class="card" id="card">
+      <div class="compose" id="compose">
+        <img class="hero" id="hero" src="/still-have-it/icon-packs/line-art/hoodie.webp" width="390" height="390" alt="" />
+        <button type="button" class="look-control" id="look-open" aria-haspopup="dialog" aria-controls="look-sheet">
+          Look · <span id="look-label">Line art</span> <span class="look-caret" aria-hidden="true">▾</span>
+        </button>
+        <h1 class="line" id="line">I still have your navy hoodie.</h1>
+
+        <div class="duration" aria-label="How long">
+          <label class="visually-hidden" for="duration-number">Duration number</label>
+          <input type="text" id="duration-number" class="duration-number" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="14" autocomplete="off" enterkeyhint="done" />
+          <div class="unit" role="group" aria-label="Unit">
+            <button type="button" id="unit-months" aria-pressed="true">Months</button>
+            <button type="button" id="unit-years" aria-pressed="false">Years</button>
+          </div>
+        </div>
+
+        <label class="visually-hidden" for="invitation">Invitation</label>
+        <textarea id="invitation" class="invitation" rows="3" maxlength="160" spellcheck="true">Kept it way too long. Want to grab a drink and get it back?</textarea>
+        <p class="filter-msg" id="filter-msg" hidden role="status" aria-live="polite">Keep it friendly—please change this wording.</p>
+
+        <div class="bg-row" role="group" aria-label="Share background">
+          <button type="button" class="chip" id="bg-light" aria-pressed="true">Light</button>
+          <button type="button" class="chip" id="bg-dark" aria-pressed="false">Dark</button>
+        </div>
+
+        <button type="button" class="cta secondary" id="item-open" aria-haspopup="dialog" aria-controls="item-sheet">Change item</button>
+
+        <label class="remember">
+          <input type="checkbox" id="remember" />
+          <span>Remember my choices</span>
+        </label>
+      </div>
+
+      <div class="result" id="result" hidden>
+        <img class="result-img" id="result-img" alt="" />
+        <button type="button" class="cta secondary" id="result-back">Back</button>
+      </div>
+
+      <button type="button" class="cta" id="share">Share card</button>
+      <button type="button" class="cta secondary" id="save">Save image</button>
+
+      <div class="toast" id="toast" aria-live="polite"></div>
+      <p class="privacy-link"><a href="/still-have-it/privacy/">Privacy</a></p>
+    </div>
+  </main>
+
+  <div class="sheet-overlay" id="look-sheet" role="dialog" aria-modal="true" aria-labelledby="look-sheet-title" hidden>
+    <div class="sheet" role="document">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <h2 class="sheet-title" id="look-sheet-title">Change look</h2>
+      <div class="pack-grid" id="pack-grid"></div>
+      <button type="button" class="sheet-close" id="look-close">Done</button>
+    </div>
+  </div>
+
+  <div class="sheet-overlay" id="item-sheet" role="dialog" aria-modal="true" aria-labelledby="item-sheet-title" hidden>
+    <div class="sheet" role="document">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <h2 class="sheet-title" id="item-sheet-title">Change item</h2>
+      <div class="item-grid" id="item-grid"></div>
+      <button type="button" class="sheet-close" id="item-close">Done</button>
+    </div>
+  </div>
+
+  <div class="age-overlay" id="age-overlay" role="dialog" aria-modal="true" aria-labelledby="age-title">
+    <div class="age-modal">
+      <h2 id="age-title">Are you 13 or older?</h2>
+      <p>We store only a site cookie that you affirmed — no name, birthday, or account.</p>
+      <div class="age-choices" role="group" aria-label="Age">
+        <button type="button" class="cta secondary age-choice" id="age-yes" aria-pressed="false">Yes</button>
+        <button type="button" class="cta secondary age-choice" id="age-no" aria-pressed="false">No</button>
+      </div>
+      <p class="age-denied" id="age-denied" hidden>This one’s for 13 and up.</p>
+      <button type="button" class="cta secondary" id="age-cancel">Not now</button>
+    </div>
+  </div>
+
+  <script src="/still-have-it/vendor/shi-filter.js"></script>
+  <script src="/still-have-it/app.js"></script>
+</body>
+</html>

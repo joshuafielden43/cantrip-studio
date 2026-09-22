@@ -1,0 +1,7 @@
+# Still Have It — nested clean paths hit the SPA if a shell is missing
+/still-have-it/*/ /still-have-it/index.html 200
+/still-have-it/*/*/ /still-have-it/index.html 200
+
+# Fortune Cookie — privacy nested path (SPA is hash-based; no item routes)
+/fortune-cookie/privacy /fortune-cookie/privacy/index.html 200
+/fortune-cookie/privacy/ /fortune-cookie/privacy/index.html 200

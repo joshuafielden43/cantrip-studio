@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy — Fortune Cookie</title>
+<link rel="stylesheet" href="/still-have-it/fonts.css" />
+<style>
+  body{font-family:"DM Sans",system-ui,sans-serif;background:#EFE2CD;color:#2f2924;margin:0;padding:48px 20px 64px;line-height:1.5}
+  main{max-width:640px;margin:0 auto;background:#fffdf8;border:3px solid #1A120C;padding:28px 24px}
+  h1{font-family:"Fraunces",Georgia,serif;font-size:28px;margin:0 0 12px}
+  h2{font-family:"Fraunces",Georgia,serif;font-size:18px;margin:28px 0 10px}
+  p,li{font-size:15px;color:#3a332e}
+  a{color:#4a6fa5}
+  .back{display:inline-block;margin-bottom:16px;font-size:14px}
+  .note{font-size:13px;color:#6e6258;margin-top:28px}
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/fortune-cookie/">← Fortune Cookie</a>
+  <h1>Privacy</h1>
+  <p>Fortune Cookie runs in your browser. There are no accounts and no database for your message.</p>
+
+  <h2>What’s in the link</h2>
+  <p>When you share a cookie, the fortune text is carried in the URL itself (the hash after <code>#</code>). Anyone who has the link can open it and read the fortune after they crack the cookie. The same URL is visible in browser history, chat logs, and anywhere the link is pasted.</p>
+  <p><strong>This is not encryption and not secrecy.</strong> Encoding in the hash only keeps the fortune out of ordinary server request logs and out of link-preview / Open Graph tags (those stay generic). It does not hide the message from people who have the link.</p>
+
+  <h2>What we don’t store</h2>
+  <p>We don’t receive or keep your fortune on a server. Cracking, copying a link, and saving a slip image all happen on your device. The slip PNG is created locally if you choose Save slip.</p>
+
+  <h2>Language filter</h2>
+  <p>Custom fortunes are checked in the browser with a local PG-oriented filter (shared with Still Have It). It is a courtesy for friendly wording — <strong>not</strong> a safety certification, age gate, or guarantee that every message is appropriate.</p>
+
+  <h2>Hosting</h2>
+  <p>This site is served through a Tailscale Funnel to our server. The service and server may keep ordinary request and security logs (for example IP address, URL path without hash, user agent, timestamps) for operations and abuse prevention. We do not add analytics or advertising scripts on this cantrip.</p>
+
+  <p><a href="/">10hi home</a></p>
+  <p class="note">Fortune Cookie · 10hi · Cantrip Studio</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,697 @@
+/* Fortune Cookie — VIEWPORT = lacquer tray well (Creative · Focus FAIL A7 revise)
+   2026-09-15. Page IS the tray. Gold rim flush to viewport. No nested tray card.
+   Tokens: creative/theme/FULLPAGE-LACQUER-TOKENS.css (--fc-*).
+   Wafer cutouts + Save slip compose (kraft download) preserved. Review only. */
+
+:root {
+  /* Stage — deep lacquer well (page = tray) */
+  --fc-stage: #060504;
+  --fc-stage-mid: #1A1410;
+  --fc-stage-hi: #3A2E24;
+  --fc-stage-lift: #1A1512;
+
+  /* Quiet gold */
+  --fc-gold: #C9A227;
+  --fc-gold-soft: #D4B483;
+  --fc-gold-hi: #E2C98A;
+
+  /* Type */
+  --fc-ink: #E8DCC8;
+  --fc-ink-quiet: rgba(184, 168, 144, 0.85);
+  --fc-ink-faint: rgba(184, 168, 144, 0.45);
+
+  /* Slip paper (after only / on-page fortune) */
+  --fc-slip: #FFFDF8;
+  --fc-slip-ink: #2f2924;
+
+  /* Rim — gold flush to viewport edge */
+  --fc-rim: 6px solid var(--fc-gold);
+
+  /* Borders / wells (chips, fields inside tray) */
+  --fc-rule: rgba(201, 162, 39, 0.28);
+  --fc-rule-strong: rgba(201, 162, 39, 0.4);
+  --fc-well: rgba(0, 0, 0, 0.35);
+
+  /* Buttons */
+  --fc-cta-fg: #0B0908;
+  --fc-cta-bg: linear-gradient(180deg, #E2C98A, #C9A227);
+  --fc-ghost-border: rgba(201, 162, 39, 0.4);
+
+  /* Aliases used by existing selectors */
+  --stage: var(--fc-stage);
+  --stage-mid: var(--fc-stage-mid);
+  --gold: var(--fc-gold);
+  --gold-soft: var(--fc-gold-soft);
+  --ink-quiet: var(--fc-ink-quiet);
+  --slip: var(--fc-slip);
+  --slip-ink: var(--fc-slip-ink);
+  --ink: var(--fc-slip-ink);
+  --ink-dark: var(--fc-cta-fg);
+  --brand: var(--fc-gold-soft);
+  --hint: var(--fc-ink-quiet);
+  --focus: var(--fc-gold);
+  --flag: #8b3a2f;
+  --radius: 14px;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --crack-ms: 320ms;
+
+  /* Save-slip canvas compose only (download kraft) — NOT page language */
+  --stamp-ink: #1A120C;
+  --stamp-kraft: #D7C4A8;
+  --stamp-paper: #EFE2CD;
+  --stamp-card: #FFFDF8;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  color-scheme: dark;
+  background: #C9A227; /* gold peek if any edge gap — rim never thin */
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+/* Page plane = lacquer well with sheen (viewport IS the tray) */
+body.fc-tray-viewport,
+.fc-tray-viewport {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100dvh;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fc-ink);
+  background:
+    radial-gradient(100% 55% at 18% -5%, rgba(255,255,255,.42), transparent 50%),
+    linear-gradient(125deg, rgba(255,255,255,.12) 0%, transparent 28%),
+    radial-gradient(90% 55% at 50% 110%, rgba(0,0,0,.65), transparent 55%),
+    linear-gradient(170deg, #3A2E24 0%, #1A1410 36%, #060504 70%, #14110E 100%);
+  background-color: var(--fc-stage);
+  /* Gold rim is ONLY on fixed .rim — single ~6px all four sides, never doubled */
+  border: none;
+  position: relative;
+}
+
+/* Fixed rim overlay — ~6px #C9A227 flush ALL four sides (create/receive/after equal) */
+.rim {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  height: 100svh;
+  box-sizing: border-box;
+  border: 6px solid #C9A227;
+  border-radius: 0;
+  /* Well depth inset past the gold — do NOT wash top/bottom rim */
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.65),
+    inset 0 14px 36px rgba(0, 0, 0, 0.22),
+    inset 0 -36px 56px rgba(0, 0, 0, 0.4),
+    inset 18px 18px 48px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Quiet gold 10hi mark — NOT Packing Stamp UL box */
+.home-logo {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(212, 180, 131, 0.55);
+}
+.home-logo img { display: none; }
+.home-logo::before {
+  content: "10hi";
+}
+.home-logo:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.shell {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 64px 16px 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-block {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(201, 162, 39, 0.75);
+}
+.title {
+  margin: 0 0 8px;
+  font-family: Georgia, var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 5vw, 1.85rem);
+  color: var(--fc-gold-soft);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+.lede {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--fc-ink-quiet);
+}
+
+/* No brown card-on-field — surface is the lacquer stage */
+.card {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.label {
+  margin: 14px 0 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(201, 162, 39, 0.7);
+}
+.preview-label {
+  margin-top: 18px;
+  text-align: center;
+  color: rgba(184, 168, 144, 0.55);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.chip {
+  appearance: none;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: left;
+  color: var(--fc-ink);
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+  max-width: 100%;
+  min-height: 44px;
+}
+.chip:hover {
+  border-color: var(--fc-gold);
+  background: rgba(201, 162, 39, 0.08);
+}
+.chip.is-selected {
+  border-color: var(--fc-gold);
+  background: rgba(201, 162, 39, 0.14);
+  color: #F0E2C8;
+  box-shadow: none;
+}
+.chip:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.custom {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--fc-ink);
+  background: var(--fc-well);
+  border: 1px solid var(--fc-rule);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  resize: vertical;
+  min-height: 72px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.custom::placeholder { color: rgba(184, 168, 144, 0.55); }
+.custom:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+  border-color: var(--fc-gold);
+}
+.custom.is-flagged {
+  border-color: var(--flag);
+}
+
+.char-count {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--fc-ink-faint);
+  text-align: right;
+}
+.filter-msg {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--flag);
+}
+
+/* —— Peek (sender only) —— */
+.peek-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--fc-ink-quiet);
+  cursor: pointer;
+  user-select: none;
+}
+.peek-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--fc-gold);
+  cursor: pointer;
+}
+.peek-slip {
+  margin: 10px auto 0;
+  max-width: 280px;
+  background: var(--fc-slip);
+  border: 1.5px solid rgba(26, 18, 12, 0.35);
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px 14px;
+  border-radius: 2px;
+}
+.peek-slip .slip-text {
+  font-size: 0.95rem;
+  color: var(--fc-slip-ink);
+}
+.peek-slip[hidden] { display: none !important; }
+
+/* —— KILL nested lacquer tray card — cookie sits on page plane —— */
+.lacquer-tray,
+.tray-inner,
+.sheen {
+  all: unset;
+  display: contents;
+}
+.lacquer-tray {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  position: static;
+}
+.tray-inner,
+.sheen {
+  display: none !important;
+}
+
+/* —— Cookie on page plane (no nested tray) —— */
+.cookie-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  margin: 8px 0 18px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0;
+  position: relative;
+}
+
+.cookie {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  z-index: 2;
+}
+
+.cookie-art {
+  background: transparent;
+  width: 188px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.55));
+  position: relative;
+  z-index: 2;
+}
+.panel-create .cookie-art {
+  width: 130px;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.5));
+}
+.cookie-art-wide { width: 220px; }
+.cookie-art-sm { width: 210px; }
+
+/* Neutralized legacy CSS disc / blob classes (no visual effect) */
+.cookie-shell,
+.cookie-fold,
+.cookie-closed,
+.cookie-seam,
+.cookie-half,
+.cookie-half-left,
+.cookie-half-right {
+  display: none !important;
+}
+
+.cookie-hit {
+  appearance: none;
+  display: block;
+  margin: 12px auto 18px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+.cookie-hit:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+.cookie-hit:hover .cookie-art,
+.cookie-hit:focus-visible .cookie-art {
+  transform: translateY(-2px);
+}
+.cookie-hit .cookie-art {
+  transition: transform 0.2s ease;
+  width: 236px;
+  filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.65));
+}
+
+/* Cracking / cracked stage — wafer PNG on page plane */
+.cracked-stage {
+  position: relative;
+  gap: 0;
+  min-height: 140px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Crack mid-beat: cracked wafer fades in ~300ms */
+.panel-cracking .cookie-art {
+  opacity: 0;
+  animation: wafer-crack-in 300ms ease-out forwards;
+}
+
+@keyframes wafer-crack-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* After stage: cream slip OVERLAYS cracked wafer (QA fix) */
+.after-stage {
+  min-height: 220px;
+  margin-bottom: 8px;
+  flex-direction: column;
+}
+.after-stage .cookie-art {
+  filter: drop-shadow(0 16px 18px rgba(0, 0, 0, 0.55));
+}
+.after-stage .slip {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -30%) rotate(-2deg);
+  width: min(200px, 88%);
+  max-width: 280px;
+  margin: 0;
+  z-index: 3;
+  padding: 11px 13px;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.5);
+}
+
+/* Slip — cream paper ONLY for fortune on after (and peek) */
+.slip {
+  margin: 0 auto 18px;
+  max-width: 320px;
+  background: var(--fc-slip);
+  color: var(--fc-slip-ink);
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  padding: 18px 16px;
+  transform: rotate(-2deg);
+}
+.panel-revealed .slip {
+  animation: slip-rise 360ms ease-out both;
+}
+.slip-text {
+  margin: 0;
+  font-family: Georgia, var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--fc-slip-ink);
+  word-wrap: break-word;
+}
+
+@keyframes slip-rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-30% + 14px)) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -30%) rotate(-2deg);
+  }
+}
+
+.receive-prompt {
+  margin: 0 0 4px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: rgba(184, 168, 144, 0.9);
+}
+
+/* Primary CTA = quiet gold fill; secondary = gold outline ghost */
+.cta {
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  min-height: 48px;
+  padding: 13px 16px;
+  border: 1px solid rgba(255, 220, 140, 0.35);
+  border-radius: var(--radius);
+  background: var(--fc-cta-bg);
+  color: var(--fc-cta-fg);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+.cta:hover:not(:disabled) { filter: brightness(1.05); }
+.cta:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.cta:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.cta.secondary {
+  background: transparent;
+  color: var(--fc-ink);
+  border: 1px solid var(--fc-ghost-border);
+  box-shadow: none;
+}
+.cta.secondary:hover:not(:disabled) {
+  filter: none;
+  background: rgba(201, 162, 39, 0.08);
+}
+
+.hint {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--fc-ink-faint);
+  word-break: break-all;
+}
+
+.toast {
+  margin-top: 14px;
+  min-height: 1.25em;
+  font-size: 14px;
+  color: var(--fc-ink);
+  text-align: center;
+}
+.toast.is-error { color: var(--flag); }
+
+.privacy-link {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 13px;
+}
+.privacy-link a { color: var(--fc-ink-faint); }
+.privacy-link a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Understated 10hi watermark on receive/after */
+.wm-10hi {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(212, 180, 131, 0.28);
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Mode visibility — single-surface replace (never stack closed + open) */
+html[data-mode="create"] .panel-closed,
+html[data-mode="create"] .panel-cracking,
+html[data-mode="create"] .panel-revealed { display: none; }
+html[data-mode="closed"] .panel-create,
+html[data-mode="closed"] .panel-cracking,
+html[data-mode="closed"] .panel-revealed { display: none; }
+html[data-mode="cracking"] .panel-create,
+html[data-mode="cracking"] .panel-closed,
+html[data-mode="cracking"] .panel-revealed { display: none; }
+html[data-mode="revealed"] .panel-create,
+html[data-mode="revealed"] .panel-closed,
+html[data-mode="revealed"] .panel-cracking { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-hit .cookie-art,
+  .panel-cracking .cookie-art,
+  .panel-revealed .slip {
+    transition: none !important;
+    animation: none !important;
+  }
+  .panel-cracking .cookie-art {
+    opacity: 1;
+  }
+  .cookie-hit:hover .cookie-art,
+  .cookie-hit:focus-visible .cookie-art {
+    transform: none;
+  }
+  .after-stage .slip {
+    transform: translate(-50%, -30%) rotate(-2deg);
+  }
+}
+
+/* Writer chrome extras */
+.link-block {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(201, 162, 39, 0.12);
+}
+.link-ready {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--fc-ink-quiet);
+}
+.reveal-eyebrow {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(201, 162, 39, 0.85);
+}
+.afterline {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(184, 168, 144, 0.75);
+}
+.label + .custom {
+  margin-top: 0;
+}
+#label-custom {
+  margin-top: 16px;
+}
+
+.custom-hint,
+.studio-afterline {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--fc-ink-quiet);
+}
+.studio-afterline {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Revealed: quiet after — slip overlays wafer on page plane */
+.panel-revealed .cracked-stage {
+  min-height: 220px;
+  margin-bottom: 8px;
+}
+.panel-revealed {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.blank {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--fc-gold-hi);
+}
+.chip .blank {
+  font-weight: 800;
+  color: var(--fc-gold-hi);
+}
+.slip-text .blank,
+#peek-slip-text .blank {
+  font-weight: 800;
+  color: var(--fc-slip-ink);
+}

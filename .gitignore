@@ -32,3 +32,9 @@ id_ed25519
 credentials
 credentials.*
 # ===== end git-hardening secrets block =====
+
+# Source recovery artifacts are preserved locally; the canonical site is at repo root.
+www-main.zip
+www-main/
+fortune-cookie/creative/
+__pycache__/

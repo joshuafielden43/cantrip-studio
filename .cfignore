@@ -1,0 +1,8 @@
+node_modules
+.git
+*.tgz
+src
+package-lock.json
+
+# Creative archive — preserve in git, skip Pages upload
+creative/
