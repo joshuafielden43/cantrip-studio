@@ -1,4 +1,4 @@
 # Targets live outside the matched prefix to avoid Pages' HTML normalization loops.
 # Keep privacy ahead of the app fallback. A splat also matches nested paths.
-/still-have-it/privacy/ /shi-privacy.html 200
-/still-have-it/*/ /shi-shell.html 200
+/still-have-it/privacy/ /shi-privacy 200
+/still-have-it/*/ /shi-shell 200
