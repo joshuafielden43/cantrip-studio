@@ -9,3 +9,6 @@ for (const name of ['index.html', '_redirects', '_headers', 'assets', 'still-hav
     filter: source => !/(^|\/)(creative|writer|src|node_modules)(\/|$)|\.(md|mjs|cjs)$|\/package(?:-lock)?\.json$/.test(source),
   });
 }
+// Rewrite targets must be outside /still-have-it/ to avoid Pages redirect loops.
+cpSync(new URL('still-have-it/index.html', import.meta.url), new URL('shi-shell.html', output));
+cpSync(new URL('still-have-it/privacy/index.html', import.meta.url), new URL('shi-privacy.html', output));

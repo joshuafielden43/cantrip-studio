@@ -1,7 +1,4 @@
-# Still Have It — nested clean paths hit the SPA if a shell is missing
-/still-have-it/*/ /still-have-it/index.html 200
-/still-have-it/*/*/ /still-have-it/index.html 200
-
-# Fortune Cookie — privacy nested path (SPA is hash-based; no item routes)
-/fortune-cookie/privacy /fortune-cookie/privacy/index.html 200
-/fortune-cookie/privacy/ /fortune-cookie/privacy/index.html 200
+# Targets live outside the matched prefix to avoid Pages' HTML normalization loops.
+# Keep privacy ahead of the app fallback. A splat also matches nested paths.
+/still-have-it/privacy/ /shi-privacy.html 200
+/still-have-it/*/ /shi-shell.html 200

@@ -17,9 +17,9 @@ Create a Pages project using **Import an existing Git repository**, select this 
 - Build output directory: `dist`
 - Root directory: leave blank
 
-The intended address is `https://cantrip-mill.pages.dev/`. GitHub pushes trigger deployments once the repository is connected. A direct-upload project is not the intended setup.
+The public address is `https://cantrip-mill.pages.dev/`. The project is connected to `joshuafielden43/cantrip-studio`; pushes to `main` trigger production deployments.
 
-`_redirects` preserves nested routes; `_headers` carries the lab's security headers, including generated-image previews.
+`_redirects` preserves nested routes using build-generated shell and privacy copies outside the matched prefix, avoiding Pages' HTML normalization loops. Fortune Cookie privacy is served directly from its directory. `_headers` carries the lab's security headers, including generated-image previews.
 
 - **Existing lab site:** `https://www.sawfish-cloud.ts.net/`
 - **Products:** `/still-have-it/` and `/fortune-cookie/`
