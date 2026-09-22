@@ -2,9 +2,9 @@
   "name": "10hi-site",
   "version": "1.0.0",
   "description": "Foundation site for Cantrip Studio / 10hoursindustries.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node build.mjs",
+    "test": "node still-have-it/test-filter.cjs"
   },
   "keywords": [],
   "author": "",

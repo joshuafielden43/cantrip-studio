@@ -38,3 +38,7 @@ www-main.zip
 www-main/
 fortune-cookie/creative/
 __pycache__/
+dist/
+node_modules/
+.pytest_cache/
+.ruff_cache/
