@@ -30,7 +30,11 @@ const ALLOW = [
   "finish", "finished", "finishing"
 ];
 
-const MIN_COLLAPSE_STEMS = ["fuck", "shit", "cunt"];
+const MIN_COLLAPSE_STEMS = [
+  ["fuck", /f[\s.\-_*+]+u[\s.\-_*+]+c[\s.\-_*+]+k/i],
+  ["shit", /s[\s.\-_*+]+h[\s.\-_*+]+i[\s.\-_*+]+t/i],
+  ["cunt", /c[\s.\-_*+]+u[\s.\-_*+]+n[\s.\-_*+]+t/i]
+];
 const FUCK_EVASIONS = new Set(["fuck", "fck", "fuk", "fuc"]);
 
 const ds = new DataSet();
@@ -75,17 +79,11 @@ function collapseSeparators(s) {
  * (e.g. "s h i t", "f.u.c.k", "f*ck") — NOT when normal words collapse into a stem
  * ("finish it" → "finishit" must NOT hit "shit").
  */
-function hasSeparatorSpacedStem(text, stem) {
-  const esc = stem.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const parts = esc.split("").join("[\\s.\\-_*+]+");
-  return new RegExp(parts, "i").test(String(text || ""));
-}
-
 function collapseBlockMatches(text) {
   const original = String(text || "");
   const hits = [];
-  for (const stem of MIN_COLLAPSE_STEMS) {
-    if (!hasSeparatorSpacedStem(original, stem)) {
+  for (const [stem, spacedStem] of MIN_COLLAPSE_STEMS) {
+    if (!spacedStem.test(original)) {
       // fuck leet with * as separator already covered; also f*ck via f[sep]*ck pattern above
       if (stem === "fuck" && /f\s*[\s.\-_*+]+\s*u?\s*[\s.\-_*+]*\s*c\s*[\s.\-_*+]+\s*k/i.test(original)) {
         hits.push({ start: 0, end: original.length, id: "fuck" });
