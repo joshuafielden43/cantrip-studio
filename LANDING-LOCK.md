@@ -1,41 +1,30 @@
-# Cantrip Studio — Landing lock (Joshua-approved)
+# Cantrip Studio — approved landing direction
 
-**Status:** Locked live · 2026-09-11
-**Live:** https://cantrip-studio.pages.dev/
-**Repo:** https://github.com/10hi-gb/cantrip-studio only
-**Local:** `/Users/10hi/Projects/cantrip-studio/site/`
-**Owner (disposition):** Projects Manager
-**Visual seat:** Creative Producer
-**Build seat:** Cantrip Engineer
-**QA:** Correctness + security required before treating landing as friend/public-clear after any material change
+Updated 2026-09-27 from Joshua's explicit selection and deployment request. Supersedes the 2026-09-11 seasonal-banner lock and its obsolete repository/location references.
 
-## Locked experience (do not drift)
+## Canonical project
 
-- Joshua-approved **Cantrip Studio** landing (not a blank placeholder).
-- Banner **v2** above the line **“Small things worth sending.”**
-- Logo → **mailto** (as wired on live).
-- **Half-height STILL HAVE IT** card linking into `/still-have-it/`.
-- Foundation look: **D Packing Stamp** (keep as designed; HoneyNeo Business folder noted only — do not match).
-- Official logo asset: **`10hi-logo-04.png`**.
+- Local: `/Users/jcf/Projects/www`
+- Repository: `https://github.com/joshuafielden43/cantrip-studio`
+- Cloudflare Pages project: `cantrip-mill`; production branch: `main`
+- Public URL: `https://cantrip-mill.pages.dev/`
+- Build: `npm run build`; publish `dist/` only.
 
-## Hard rules
+## Approved homepage
 
-1. **Still Have It subtree** is independent product work — landing changes must not break `/still-have-it/` (byte-preserve unless a SHI packet says otherwise).
-2. Clean cantrip URLs under kebab dirs with trailing slash; no query-arg bloat for friend shares.
-3. Every material landing/deploy change gets **QA two passes** (correctness, then security) before friend/public disposition — no soft-close.
-4. GitHub only `10hi-gb`. Recovery artifacts must keep this homepage on restore.
+- Banner: **Little Works**, `assets/cantrip-little-works.png`, 2172 × 724. Joshua selected it unambiguously from three generated alternatives.
+- Keep the current typographic `assets/10hi-logo-04.png` logo and its mailto link. It belongs with the new banner and does not need regeneration.
+- Retain “Small things worth sending.” and existing homepage copy/navigation for this banner deployment.
+- Draw visual/style cues from `/Users/jcf/Documents/HoneyNeo/HoneyNEO/DESIGN.md`: royal blue, navy and vellum; disciplined typography. Cantrip is more playful and whimsical than the institutional 10hi work. Do not import castles, Gothic towers or heraldic pageantry.
+- No seasonal tableau: the old ribbons, star and ornament-like objects read as Christmas to Joshua and a trusted audience reviewer.
+- Sub-pages intentionally have their own self-referential visual styles. Do not force this homepage art direction onto Still Have It or Fortune Cookie.
 
-## Studio roster — all seats must know
+## Asset records
 
-| Seat | Expectation |
-| --- | --- |
-| Creative Producer | Landing chrome + Packing Stamp look source of truth; challenge if live drifts |
-| Cantrip Engineer | Build/deploy to this lock; preserve SHI; refresh recovery artifact with homepage |
-| Cantrip QA | Gate every material landing change |
-| Writing Bot | Landing words are locked unless Joshua/Writer pass revises them |
-| Audience / Hype | Home is studio front door — do not invent campaign chrome on landing without disposition |
+Originals, exact prompts and structured Markdown metadata: `output/imagegen/cantrip-banner-options/`. Little Works is selected; An Inkling is retained for unspecified future use; A Small Surprise (Joshua's “Escher marble run”) is earmarked for reuse after polish. Not selected does not mean rejected. Preserve originals; give derivatives their own IDs and parent links.
 
-## Evidence
+The generation used the built-in image tool. Its underlying model identifier and embedded watermark were not independently verified. Do not invent provenance beyond the recorded receipt.
 
-- Prior foundation QA close-out (pre this revision): Correctness + Security PASS 2026-09-11.
-- This revision: QA re-check in flight / required PASS before “clear.”
+## Deployment checks
+
+Before production: run build, existing Node tests and pytest; inspect desktop/mobile rendering, image/alt-text references and public-output exclusions. Confirm changes do not alter product subtrees or introduce scripts, endpoints or dependencies. After push: verify commit deployment and the public page/asset, then record the receipt in `DEPLOYMENT.md`. Selection alone is not deployment.

@@ -25,3 +25,9 @@ The public address is `https://cantrip-mill.pages.dev/`. The project is connecte
 - **Products:** `/still-have-it/` and `/fortune-cookie/`
 - **Edge config:** `ops/Caddyfile`; it preserves Still Have It’s fallback routes and the generated-image CSP requirement.
 - **Creative archive:** `/creative/` is preserved in the recovery artifact and excluded from the served site.
+
+## Homepage design and asset library
+
+[Approved landing direction](LANDING-LOCK.md) records the Little Works banner, existing 10hi logo, HoneyNEO visual cues and intentionally independent product-page styles. [Asset records](output/imagegen/cantrip-banner-options/prompts.md) retain all three candidates, exact prompts, file hashes and Joshua's selection/reuse notes. Each image has a Markdown sidecar with versioned YAML metadata and a stable asset ID for future database import. These private working records are excluded from the public build.
+
+[Deployment receipt](DEPLOYMENT.md) records the latest verified release. Cloudflare production is Git-connected: pushing `main` publishes the build. Keep generated originals and metadata in Git, but publish only `dist/`.
