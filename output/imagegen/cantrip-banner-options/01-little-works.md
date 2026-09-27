@@ -17,7 +17,11 @@ sha256: "e6f1645c137f668237314e154883c4b23af691ff65abbe32475e24ab62d9c276"
 status: "selected"
 decision: "approved_for_cantrip_homepage"
 decision_by: "Joshua"
-deployed: false
+deployed: true
+deployed_date: "2026-09-27"
+production_url: "https://cantrip-mill.pages.dev/"
+deployment_commit: "897487234c4fe59c617021547b4698d73b68723a"
+cloudflare_deployment_id: "e4f8e605-a4e2-438c-93e5-32d7b6aa95db"
 polish_required_before_reuse: false
 polish_brief: null
 future_placement: null
@@ -46,7 +50,7 @@ watermark_verification: "not_performed"
 
 ## Decision and reuse notes
 
-Selected by Joshua as the replacement Cantrip homepage banner. Selection is recorded; integration and deployment have not been performed.
+Selected by Joshua as the replacement Cantrip homepage banner. Integrated and deployed on 2026-09-27. Cloudflare reported success and the public browser loaded the selected banner at its original dimensions.
 
 Joshua’s verbatim selection feedback (shared across this collection):
 
