@@ -14,7 +14,7 @@ Updated 2026-09-27 from Joshua's explicit selection and deployment request. Supe
 
 - Banner: **Little Works**, `assets/cantrip-little-works.png`, 2172 × 724. Joshua selected it unambiguously from three generated alternatives.
 - Keep the current typographic `assets/10hi-logo-04.png` logo and its mailto link. It belongs with the new banner and does not need regeneration.
-- Retain “Small things worth sending.” and existing homepage copy/navigation for this banner deployment.
+- Retain “Small things worth sending.” Homepage navigation must expose both Still Have It (`still-have-it/`) and Fortune Cookie (`fortune-cookie/`); stack their cards on narrow screens.
 - Draw visual/style cues from `/Users/jcf/Documents/HoneyNeo/HoneyNEO/DESIGN.md`: royal blue, navy and vellum; disciplined typography. Cantrip is more playful and whimsical than the institutional 10hi work. Do not import castles, Gothic towers or heraldic pageantry.
 - No seasonal tableau: the old ribbons, star and ornament-like objects read as Christmas to Joshua and a trusted audience reviewer.
 - Sub-pages intentionally have their own self-referential visual styles. Do not force this homepage art direction onto Still Have It or Fortune Cookie.

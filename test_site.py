@@ -27,3 +27,10 @@ def test_edge_keeps_required_fallback_and_blob_preview_policy():
     caddyfile = (ROOT / "ops" / "Caddyfile").read_text()
     assert "/still-have-it/index.html" in caddyfile
     assert "img-src 'self' data: blob:" in caddyfile
+
+
+def test_homepage_links_both_published_products():
+    homepage = (ROOT / "dist/index.html").read_text()
+    for route in ("still-have-it/", "fortune-cookie/"):
+        assert f'href="{route}"' in homepage
+        assert (ROOT / "dist" / route / "index.html").is_file()

@@ -16,3 +16,7 @@ Local checks: `npm run build`, `npm test`, `python3 -m pytest -q` (3 passed), `g
 - Live browser verified `/assets/cantrip-little-works.png` loaded completely at 2172 × 724 with the new alt text; screenshot: `output/imagegen/cantrip-banner-options/live-little-works-desktop.png`.
 - Separate raw HTTP verification received 403; no claim of a remote byte-hash comparison. Local published asset matches the approved original byte-for-byte.
 - The dashboard stalled loading; deployment was verified through the Cloudflare check and live browser instead. Local ci-watch could not run because gh is absent; GitHub API used for status.
+
+## Fortune Cookie navigation correction — 2026-09-27
+
+The banner release left the obsolete Next placeholder on the homepage. Replaced it with a Fortune Cookie card pointing to `/fortune-cookie/`, with wrapping desktop navigation and stacked mobile cards. Both product subtrees remain unchanged.
