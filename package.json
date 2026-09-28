@@ -4,7 +4,7 @@
   "description": "Foundation site for Cantrip Studio / 10hoursindustries.",
   "scripts": {
     "build": "node build.mjs",
-    "test": "node still-have-it/test-filter.cjs"
+    "test": "node still-have-it/test-filter.cjs && node one-across/test.cjs"
   },
   "keywords": [],
   "author": "",

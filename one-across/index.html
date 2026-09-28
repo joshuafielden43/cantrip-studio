@@ -3,27 +3,155 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="One Across, an approved visual sample from Cantrip Studio.">
+<meta name="theme-color" content="#f3eee6">
+<meta name="description" content="Write a clue for one word. Send the blank. Let them earn the answer.">
 <title>One Across — Cantrip Studio</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f3eee6;color:#141414;font-family:Arial,sans-serif}
-header{padding:20px clamp(20px,4vw,64px);display:flex;justify-content:space-between;align-items:center;gap:20px}
-header a{color:inherit;text-underline-offset:4px}
-h1{font-size:18px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin:0}
-main{max-width:1540px;margin:auto;padding:0 clamp(12px,3vw,48px) 48px}
-.art{display:block;width:100%;height:auto}
-.note{font-size:14px;line-height:1.5;margin:20px 0 0}
-a:focus-visible{outline:3px solid #0d3d8c;outline-offset:4px}
+a{color:inherit;text-underline-offset:4px}button,input,textarea{font:inherit}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px clamp(20px,4vw,64px)}
+header a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #0d3d8c;outline-offset:4px}
+.brand{font-size:18px;letter-spacing:.14em;text-transform:uppercase;margin:0;font-weight:500}
+.wrap{max-width:1540px;margin:auto;padding:0 clamp(12px,3vw,48px) 48px}
+.stage{display:grid;grid-template-columns:1fr 1fr;min-height:min(70vw,620px)}
+.paper{background:#f3eee6;padding:clamp(24px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between}
+.ink{position:relative;background:#141414;color:#f3eee6;padding:clamp(24px,5vw,72px);display:flex;flex-direction:column;justify-content:center}
+.ink::before{content:"";position:absolute;left:calc(clamp(24px,5vw,72px) - 18px);top:20%;bottom:20%;width:12px;border:2px solid #f3eee6;border-right:0}
+.kicker{font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 30px}
+h1{font-size:clamp(40px,5vw,72px);font-weight:400;line-height:1.08;letter-spacing:-.045em;margin:0 0 18px}
+.lede{max-width:33ch;font-size:clamp(17px,2vw,23px);line-height:1.45;margin:0}
+.clue{font-size:clamp(30px,4vw,62px);line-height:1.16;letter-spacing:-.04em;margin:0;overflow-wrap:anywhere}
+.grid{display:grid;width:min(100%,calc(var(--n)*54px));grid-template-columns:repeat(var(--n),minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));margin:28px 0 0}
+.cell{position:relative;border-top:2px solid #141414;border-left:2px solid #141414;display:grid;place-items:center;font-size:clamp(17px,2.8vw,34px);font-weight:400;background:#fffdf8}
+.cell.cross{font-weight:600}.cell.right{border-right:2px solid #141414}.cell.bottom{border-bottom:2px solid #141414}
+.cell[data-number]::before{content:attr(data-number);position:absolute;top:2px;left:4px;font-size:clamp(8px,1vw,13px);font-weight:400}
+form{max-width:550px;margin:34px auto 0}
+fieldset{padding:0;border:0;margin:0}legend{font-size:26px;margin-bottom:12px}
+label{display:block;font-size:15px;font-weight:600;margin:18px 0 8px}
+input[type=text],textarea{display:block;width:100%;border:2px solid #141414;background:#fffdf8;color:#141414;padding:12px 14px;border-radius:0}
+textarea{min-height:90px;resize:vertical}
+button,.button{display:inline-block;border:2px solid #141414;background:#141414;color:#fffdf8;padding:11px 18px;margin-top:20px;cursor:pointer;text-decoration:none;font-weight:600}
+button:hover,.button:hover{background:#333}
+.secondary{background:transparent;color:#141414;margin-left:8px}.secondary:hover{background:#ddd8d0}
+.notice{min-height:1.5em;line-height:1.5;margin:14px 0;color:#9b1c1c}
+.notice.ok{color:#116536}
+.result{border-top:1px solid #b8b2a9;margin-top:28px;padding-top:18px}
+.result p{line-height:1.5}
+.linkbox{font-size:13px;word-break:break-all}
+.hidden{display:none}
+.fine{font-size:13px;line-height:1.5;color:#504b45;margin:24px auto 0;max-width:550px}
+footer{text-align:right;font-size:13px;margin-top:25px}
+@media(max-width:750px){.stage{grid-template-columns:1fr}.paper,.ink{min-height:280px}.ink{min-height:220px}.cell{font-size:clamp(16px,5vw,30px)}header{padding:16px 24px}.wrap{padding:0 12px 36px}}
+@media(prefers-reduced-motion:no-preference){.celebrate{animation:pop .35s ease-out}@keyframes pop{from{transform:scale(.98)}to{transform:scale(1)}}}
 </style>
 </head>
 <body>
-<header><h1>One Across</h1><a href="/">Cantrip Studio</a></header>
-<main>
-  <a href="approved-wall.png" aria-label="Open the full-size One Across visual sample">
-    <img class="art" src="approved-wall.png" width="2640" height="1160" alt="One Across visual sample: a nearly complete crossword with an unfinished seven-letter row crossing RUBY and GLASS, beside the words ‘The night we keep for the long table.’">
-  </a>
-  <p class="note">An approved visual sample. Select the image to view it full size.</p>
+<header><p class="brand">One Across</p><a href="/">Cantrip Studio</a></header>
+<main class="wrap">
+  <section class="stage" aria-label="One Across puzzle">
+    <div class="paper">
+      <div><p class="kicker" id="paper-kicker">A little word to earn</p><h1 id="paper-title">One clue.<br>One word.</h1><p class="lede" id="paper-lede">Write a clue for someone who will know what you mean.</p></div>
+      <div class="grid" id="grid" aria-hidden="true"></div>
+    </div>
+    <div class="ink"><p class="clue" id="clue-display">The night we keep for the long table.</p></div>
+  </section>
+  <form id="create-form" novalidate>
+    <fieldset><legend>Make one to send</legend>
+      <label for="answer">Your word (3–12 letters)</label><input id="answer" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" required>
+      <label for="clue">Your clue (up to 200 characters)</label><textarea id="clue" maxlength="200" required></textarea>
+      <button type="submit">Make the link</button>
+    </fieldset>
+    <p id="create-status" class="notice" role="status" aria-live="polite"></p>
+    <div id="created" class="result hidden"><p>Your puzzle is ready. Send this link:</p><input id="share-link" class="linkbox" type="text" readonly aria-label="Puzzle link"><button id="copy" type="button">Copy link</button><a id="preview" class="button secondary" href="#">Open puzzle</a><p id="copy-status" class="notice" role="status" aria-live="polite"></p></div>
+  </form>
+  <form id="solve-form" class="hidden" novalidate>
+    <fieldset><legend>What’s the word?</legend><label for="guess">Your guess</label><input id="guess" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required><button type="submit">Check</button></fieldset>
+    <p id="solve-status" class="notice" role="status" aria-live="polite"></p><a class="button secondary" href="/one-across/">Make your own</a>
+  </form>
+  <div id="bad-link" class="hidden result"><p id="bad-message" role="alert"></p><a class="button" href="/one-across/">Make a new puzzle</a></div>
+  <p class="fine">No server stores your word or clue. The link contains the clue, two crossing letters, and a check for the answer, so avoid sensitive clues. Short words can be guessed from that check; this is a surprise, not secrecy.</p>
+  <footer><a href="approved-wall.png">View the approved visual sample</a></footer>
 </main>
+<script>
+const $ = id => document.getElementById(id);
+window.addEventListener('hashchange', () => location.reload());
+const makeForm = $('create-form'), solveForm = $('solve-form');
+const words = {A:'GLASS',B:'RUBY',C:'ECHO',D:'IDEA',E:'PEAR',F:'AFTER',G:'SUGAR',H:'CHAIR',I:'RIVER',J:'AJAR',K:'SKY',L:'GLASS',M:'AMBER',N:'SNAKE',O:'STONE',P:'APPLE',Q:'AQUA',R:'TREE',S:'ASH',T:'STAR',U:'RUBY',V:'AVOID',W:'AWE',X:'AXE',Y:'LYRIC',Z:'AZURE'};
+function crossings(answer) {
+  const n = answer.length;
+  return [{p:Math.floor((n-1)/4),l:answer[Math.floor((n-1)/4)]}, {p:Math.ceil((n-1)*3/4),l:answer[Math.ceil((n-1)*3/4)]}];
+}
+function showGrid(n, letters = '', crosses = []) {
+  const grid = $('grid'), cells = new Map();
+  grid.style.setProperty('--n', n); grid.style.aspectRatio = `${n} / 6`;
+  for (let x=0; x<n; x++) cells.set(`${x},2`, {x,y:2,letter:letters[x] || crosses.find(c => c.p === x)?.l || '',number:x===0?'1':''});
+  crosses.forEach((cross, i) => {
+    const word = words[cross.l], start = 2-word.indexOf(cross.l);
+    for (let j=0; j<word.length; j++) {
+      const y=start+j, key=`${cross.p},${y}`;
+      if (y!==2) cells.set(key,{x:cross.p,y,letter:word[j],number:j===0?String(i+2):''});
+    }
+  });
+  grid.replaceChildren(...[...cells.values()].map(({x,y,letter,number}) => {
+    const cell=document.createElement('span'); cell.className='cell';
+    if (y===2 && crosses.some(c => c.p===x)) cell.classList.add('cross');
+    if (!cells.has(`${x+1},${y}`)) cell.classList.add('right');
+    if (!cells.has(`${x},${y+1}`)) cell.classList.add('bottom');
+    cell.style.gridColumn=x+1; cell.style.gridRow=y+1; cell.textContent=letter;
+    if (number) cell.dataset.number=number;
+    return cell;
+  }));
+}
+function status(id, message, ok = false) {
+  const el = $(id); el.textContent = message; el.classList.toggle('ok', ok);
+}
+async function hash(text) {
+  const data = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(data), b => b.toString(16).padStart(2, '0')).join('');
+}
+function error(message) {
+  $('bad-message').textContent = message;
+  $('bad-link').classList.remove('hidden'); makeForm.classList.add('hidden'); solveForm.classList.add('hidden');
+  $('paper-title').textContent = 'This link needs a fresh start.'; $('clue-display').textContent = 'The puzzle link is incomplete or damaged.'; $('grid').replaceChildren();
+}
+if (!globalThis.crypto?.subtle) {
+  error('This puzzle needs a secure browser connection (HTTPS or localhost). Open it there to make or solve a puzzle.');
+} else if (location.hash) {
+  try {
+    const fields = new URLSearchParams(location.hash.slice(1));
+    const v = fields.get('v'), clue = fields.get('c'), n = Number(fields.get('n')), digest = fields.get('h'), crossText = fields.get('x') || '';
+    const crosses = crossText.split('.').map(item => ({p:Number(item.slice(0,-1)),l:item.slice(-1)}));
+    if (fields.size !== 5 || v !== '1' || !clue || clue.trim() !== clue || clue.length > 200 || !Number.isInteger(n) || n < 3 || n > 12 || !/^[a-f0-9]{64}$/.test(digest || '') || !/^(0|[1-9][0-9]?)[A-Z]\.(0|[1-9][0-9]?)[A-Z]$/.test(crossText) || crosses[0].p!==Math.floor((n-1)/4) || crosses[1].p!==Math.ceil((n-1)*3/4) || crosses.some(c => !words[c.l])) throw new Error('invalid');
+    makeForm.classList.add('hidden'); solveForm.classList.remove('hidden');
+    $('paper-kicker').textContent = 'One across'; $('paper-title').textContent = `${n} letters.`;
+    $('paper-lede').textContent = 'A word someone wanted you to find.'; $('clue-display').textContent = clue; $('guess').maxLength = n; showGrid(n,'',crosses);
+    solveForm.addEventListener('submit', async event => {
+      event.preventDefault(); const guess = $('guess').value.trim().toUpperCase();
+      if (!/^[A-Z]+$/.test(guess) || guess.length !== n) { status('solve-status', `Enter exactly ${n} letters (A–Z).`); return; }
+      if (await hash(guess) === digest) { showGrid(n,guess,crosses); $('grid').classList.add('celebrate'); status('solve-status', `Yes. ${guess} is the word.`, true); $('guess').disabled = true; solveForm.querySelector('button').disabled = true; }
+      else status('solve-status', 'Not yet. Try another word.');
+    });
+  } catch { error('That puzzle link is incomplete or damaged. Ask the sender for a fresh link, or make a new puzzle.'); }
+} else {
+  showGrid(7,'',[{p:1,l:'U'},{p:5,l:'A'}]);
+  makeForm.addEventListener('submit', async event => {
+    event.preventDefault(); status('create-status', ''); $('created').classList.add('hidden');
+    const answer = $('answer').value.trim().toUpperCase(), clue = $('clue').value.trim();
+    if (!/^[A-Z]{3,12}$/.test(answer)) { status('create-status', 'Use 3–12 letters (A–Z) for the word.'); $('answer').focus(); return; }
+    if (!clue || clue.length > 200) { status('create-status', 'Write a clue of 1–200 characters.'); $('clue').focus(); return; }
+    const crosses = crossings(answer);
+    const fields = new URLSearchParams({v:'1', c:clue, n:String(answer.length), h:await hash(answer), x:crosses.map(c=>`${c.p}${c.l}`).join('.')});
+    const link = new URL(location.href); link.hash = fields.toString();
+    $('share-link').value = link.href; $('preview').href = link.href;
+    $('answer').value = ''; showGrid(answer.length,'',crosses); $('clue-display').textContent = clue;
+    $('created').classList.remove('hidden'); status('create-status', 'Link ready. Your word has been cleared from this page.', true);
+  });
+  $('copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText($('share-link').value); status('copy-status', 'Copied.', true); }
+    catch { $('share-link').focus(); $('share-link').select(); status('copy-status', 'Copy the selected link manually.'); }
+  });
+}
+</script>
 </body>
 </html>
