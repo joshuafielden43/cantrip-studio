@@ -2,8 +2,7 @@ const assert = require('node:assert/strict');
 const {readFileSync} = require('node:fs');
 const vm = require('node:vm');
 
-const html = readFileSync(__dirname + '/index.html', 'utf8');
-const script = html.split('<script>')[1].split('</script>')[0];
+const script = readFileSync(__dirname + '/app.js', 'utf8');
 const crossword = script.slice(script.indexOf('const words ='), script.indexOf('function showGrid'));
 const {words, crossings} = vm.runInNewContext(crossword + ';({words,crossings})');
 for (const letter of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') {
